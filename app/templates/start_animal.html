@@ -1,0 +1,29 @@
+﻿{%extends "base.html"%}
+
+
+{% block title %}BrainPower{% endblock%}
+
+{% block page_content %}
+    <div id="quiz"></div>
+    <button id ="submit">Submit Quiz</button>
+    <div id="results"></div>
+
+    <p>correct: {{correct}}</p>
+    <form action="#" method='POST'>
+        <ol>
+        {% for q in question %}
+            <h1>{{q.body}}</h1>
+            <input type='radio' value='{{q.choice1}}' name='{{q.id}}'/>{{q.choice1}}
+            <input type='radio' value='{{q.choice2}}' name='{{q.id}}'/>{{q.choice2}}
+            <input type='radio' value='{{q.choice3}}' name='{{q.id}}'/>{{q.choice3}}
+            <input type='radio' value='{{q.choice4}}' name='{{q.id}}'/>{{q.choice4}}
+        {% endfor %}
+    </ol>
+    <input type="submit" value="submit"/>
+    </form>
+    {% if question.has_prev %}<a href="{{url_for('.start',page=question.prev_num)}}">&lt;&lt; Newer question</a>{% else %}&lt;&lt; Newer question{% endif %} |
+    {% if question.has_next %}<a href="{{url_for('.start',page=question.next_num)}}">Older question &gt;&gt;</a>{% else %}Older question &gt;&gt;{% endif %}
+{% endblock %}
+
+
+

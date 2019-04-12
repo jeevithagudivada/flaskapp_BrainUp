@@ -1,0 +1,62 @@
+﻿{% extends "bootstrap/base.html" %}
+
+{% block title %}BrainUp{% endblock %}
+
+{% block navbar %}
+<div class = "navbar navbar-inverse" role = "navigation" style="height:70px">
+   <div class="container" style="height:70px">
+       <div class="navbar-header" style="height:70px">
+           <button type ="button" class="navbar-toggle"
+            data-toggle ="collapse" data-target=".navbar-collapse">
+               <span class ="sr-only">Toggle navigation</span>
+               <span class ="icon-bar"></span>
+               <span class ="icon-bar"></span>
+               <span class ="icon-bar"></span>
+           </button>   
+       </div>
+       <div class ="navbar-collapse collapse">
+           <ul class ="nav navbar-nav">
+               <li><a href="/">Home</a></li>
+           </ul>
+
+           <ul class="nav navbar-nav navbar-right">
+               {% if current_user.is_authenticated %}
+               <li class="dropdown">
+                   <a data-target="#" class="dropdown-toggle" data-toggle="dropdown">Account <b class="caret"></b></a>
+                   <ul class="dropdown-menu">
+                       <li><a href="{{ url_for('change_password') }}">Change Password</a></li>
+                       <li><a href="{{ url_for('logout') }}">Sign Out</a></li>
+                   </ul>
+               </li>
+               {% else %}
+               <li><a href="{{ url_for('login') }}">Login</a></li>
+               <li><a href="{{ url_for('register') }}">Register</a></li>
+               {% endif %}
+           </ul>
+       </div>
+   </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class= "container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %} {% endblock %}
+</div>
+<audio autoplay>
+  <source src="https://a.tumblr.com/tumblr_oat8zhArMY1u1vzz5o1.mp3" type="audio/mpeg" volume="01">
+  Your browser does not support the audio element
+</audio>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src={{ url_for('static', filename='js/jquery-3.2.1.js') }}></script>
+<script src={{ url_for('static', filename='js/bootstrap.js') }}></script>
+{% endblock %}

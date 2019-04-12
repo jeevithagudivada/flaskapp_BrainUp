@@ -1,0 +1,99 @@
+body {
+  background: radial-gradient(#e0d0b5 60%, #6b553a);
+  color: #4a3b28;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-family: 'Ultra', serif;
+}
+@media (max-width: 1000px) {
+  body {
+    font-size: 14px;
+  }
+}
+@media (max-width: 850px) {
+  body {
+    font-size: 12px;
+  }
+}
+@media (max-width: 650px) {
+  body {
+    flex-direction: column;
+  }
+}
+@media (max-width: 500px) {
+  body {
+    font-size: 10px;
+  }
+}
+@media (max-width: 350px) {
+  body {
+    font-size: 8px;
+  }
+}
+
+.wrap {
+  padding-left: 2em;
+  width: 40%;
+}
+@media (max-width: 650px) {
+  .wrap {
+    width: 100vw;
+    text-align: center;
+    padding: 20px 0 0;
+  }
+}
+
+.options > div {
+  cursor: pointer;
+  font-size: 2.2em;
+  padding: 2%;
+}
+.options > div:hover {
+  color: #292016;
+}
+
+h2 {
+  font-size: 4em;
+}
+
+.capital {
+  font-size: 3em;
+}
+
+.start {
+  font-size: 2em;
+  padding: 0.5em 0;
+}
+.start:hover {
+  color: #292016;
+  cursor: pointer;
+}
+
+svg {
+  width: 80vw;
+  height: 100vh;
+}
+@media (max-width: 650px) {
+  svg {
+    width: 100vw;
+  }
+}
+
+.country {
+  fill: #A98962;
+  stroke: #6b553a;
+  stroke-opacity: 1;
+}
+.country:hover {
+  fill: #6b553a;
+  cursor: pointer;
+}
+.country.correct {
+  fill: green;
+  transition: fill 0.5s;
+}
+.country.wrong {
+  fill: red;
+  transition: fill 0.5s ease-out;
+}
